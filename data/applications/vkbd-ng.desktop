@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Vkbd
+Comment=Python-EFL-based on-screen keyboard
+Exec=vkbd-ng
+Terminal=false
+Type=Application
+Icon=vkbd
+Categories=Application;Utility;

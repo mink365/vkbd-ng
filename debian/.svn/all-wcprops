@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/e/!svn/ver/40799/trunk/PROTO/keys/debian
+END
+control
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/e/!svn/ver/40799/trunk/PROTO/keys/debian/control
+END
+compat
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/e/!svn/ver/40799/trunk/PROTO/keys/debian/compat
+END
+changelog
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/e/!svn/ver/40799/trunk/PROTO/keys/debian/changelog
+END
+copyright
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/e/!svn/ver/40799/trunk/PROTO/keys/debian/copyright
+END
+rules
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/e/!svn/ver/40799/trunk/PROTO/keys/debian/rules
+END
