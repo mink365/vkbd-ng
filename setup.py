@@ -48,19 +48,18 @@ def clean():
          os.remove(rmfile)
 
    # set the permissions
-   setperms("data/vkbd-ng/keys", 0755)
    setperms("data/applications/vkbd-ng.desktop", 0644)
    setperms("data/pixmaps/vkbd.png", 0644)
    setperms("data/pixmaps/vkbd_svg.svg", 0644)
 
    # remove the edje file
-   removefile("data/vkbd-ng/vkbd-ng.edj")
+   removefile("data/themes/vkbd.edj")
    
 ## Build a new edje file
 def build():
    # make new edj file
-   os.system("edje_cc -v -id data/edj_data -fd data/edj_data data/edj_data/vkbd.edc -o data/vkbd-ng/vkbd-ng.edj")
-   os.chmod("data/vkbd-ng/vkbd-ng.edj", 0644)
+   os.system("edje_cc -v -id data/themes -fd data/themes/images data/themes/vkbd.edc -o data/themes/vkbd.edj")
+   os.chmod("data/themes/vkbd.edj", 0644)
 
 ### RUN THOSE FUNCTIONS
 if sys.argv[1] == "build":
@@ -71,7 +70,7 @@ elif sys.argv[1] == "clean":
 
 ### SETUPTOOLS PART
 setup(name = 'Vkbd-ng',
-      version = '0.1.0',
+      version = '0.2.0',
       author = 'Mink365',
       author_email = 'mink365@gmail.com',
       description = 'Virtual keyboard based on EFL.Based on vkbd and Keys',
@@ -81,7 +80,9 @@ setup(name = 'Vkbd-ng',
                   "egg_info" : egg_info},
       setup_requires = ["python_evas>=0.2.1", "python_ecore>=0.2.1", "python_edje>=0.2.1", "virtkey>=0.01"],
       install_requires = ["python_evas>=0.2.1", "python_ecore>=0.2.1", "python_edje>=0.2.1", "virtkey>=0.01"],
-      data_files = [('share/vkbd-ng', ["data/vkbd-ng/vkbd-ng", "data/vkbd-ng/vkbd-ng.edj"]), 
+      data_files = [('share/vkbd-ng', ["vkbd/vkbd", "vkbd/cand_panel.py", "vkbd/keyboard.py", "vkbd/toggle_obj.py"]), 
+                    ('share/vkbd-ng/themes', ["data/themes/vkbd.edj"]),
+                    ('/usr/lib/ibus/', ["vkbd/backend/ibus/ibus-ui-vkbd"]),
                     ('share/pixmaps', ["data/pixmaps/vkbd.png", "data/pixmaps/vkbd_svg.svg"]), 
                     ('share/applications', ["data/applications/vkbd-ng.desktop"]),]
       )

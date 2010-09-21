@@ -1,6 +1,6 @@
 #!/bin/sh
 cd $(echo $0 | sed 's/\/bin\/vkbd-ng//')/share/vkbd-ng
-if ./vkbd-ng; then
+if ./vkbd; then
 	exit 0
 else
 	exit 1
