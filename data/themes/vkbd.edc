@@ -1,0 +1,64 @@
+
+collections {
+#include "cand_panel.edc"
+#include "keyboard.edc"
+
+	group {
+		name: "main";
+		parts {
+			part {
+				name: "cand_panel";
+				type: SWALLOW;
+				description {
+					state: "default" 0.0;
+					rel1 {
+						relative: 0.5 1.0;
+						offset: -402 -234;
+					}
+					rel2 {
+						relative: 0.5 1.0;
+						offset: 402 -198;
+					}
+					visible: 0;
+				}	
+				description {
+					state: "show" 0.0;
+					inherit: "default" 0.0;
+					visible: 1;
+				}
+			}
+
+			part {
+				name: "keyboard";
+				type: SWALLOW;
+				description {
+					state: "default" 0.0;
+					rel1 {
+						relative: 0.5 1.0;
+						offset: -402 -198;
+					}
+					rel2 {
+						relative: 0.5 1.0;
+						offset: 402 1;
+					}
+					visible: 1;
+				}
+			}
+		}
+
+		programs {
+			program {
+            	name: "show-cand_panel";
+            	signal: "show-cand_panel";
+            	action: STATE_SET "show" 0.0;
+            	target: "cand_panel";
+         	}
+         	program {
+            	name: "hide-cand_panel";
+            	signal: "hide-cand_panel";
+            	action: STATE_SET "default" 0.0;
+            	target: "cand_panel";
+         	}
+		}
+	}
+}

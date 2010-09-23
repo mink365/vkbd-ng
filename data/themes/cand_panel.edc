@@ -1,0 +1,266 @@
+
+	group {
+        name: "vkbd/cand_panel";
+        parts {
+            part {
+                name: "bg";
+                type: RECT;
+                description {
+                    state: "default" 0.0;
+                    color: 0 0 0 0;
+                }
+            }
+
+            part {
+                name: "bg-img";
+                type: IMAGE;
+                description {
+                    state: "default" 0.0;
+                    image {
+                        normal: "images/key-special-selected.png";
+                        border: 9 9 9 9;
+                    }
+                }
+            }
+            part {
+                name: "input_logo";
+                type: SWALLOW;
+                description {
+                    state: "default" 0.0;
+                    rel1.relative: 0.0 0.0;
+                    rel2.relative: 0.07 1.0;
+                }
+            }
+            part {
+                name: "preedit_label";
+                type: SWALLOW;
+//				source: "vkbd/preedit_label";
+                description {
+                    state: "default" 0.0;
+                    rel1.relative: 0.07 0.0;
+					rel1.offset: 3 0;
+                    rel2.relative: 0.84 0.3;
+                    rel2.offset: -3 0;
+                }
+            }
+            part {
+                name: "cand_area";
+                type: GROUP;
+				source: "vkbd/cand_area";
+                description {
+                    state: "default" 0.0;
+                    rel1.relative: 0.07 0.3;
+					rel1.offset: 3 0;
+                    rel2.relative: 0.88 1.0;
+                    rel2.offset: -3 0;
+                }
+            }
+            part {
+                name: "page_up";
+                type: SWALLOW;
+                description {
+                    state: "default" 0.0;
+                    rel1.relative: 0.88 0.0;
+                    rel2.relative: 0.94 1.0;
+					rel2.offset: -3 0;
+                }
+            }
+            part {
+                name: "page_down";
+                type: SWALLOW;
+                description {
+                    state: "default" 0.0;
+                    rel1.relative: 0.94 0.0;
+					rel1.offset: 3 0;
+                    rel2.relative: 1.0 1.0;
+                }
+            }
+
+        }
+    }
+
+
+
+group {
+	name: "vkbd/cand_area";
+	parts {
+		part {
+			name: "bg";
+            type: RECT;
+            description {
+        		state: "default" 0.0;
+//				min: 100 50;
+				color: 0 0 0 0;
+          	}			
+		}
+		part {
+			name: "bg-img";
+   			type: IMAGE;
+     		description {
+     			state: "default" 0.0;
+				rel1.relative: 0.0 0.0;
+				rel1.offset: 0 3;
+      			rel2.relative: 1.0 1.0;
+				rel2.offset: 0 -3;
+     			image {
+    				normal: "images/key-default.png";
+  					border: 9 9 9 9;
+				}
+                visible: 0;
+       		}
+		}
+		part {
+ 			name: "hbox";
+       		type: BOX;
+      		description {
+  				state: "default" 0.0;
+     			rel1.relative: 0.0 0.0;
+				rel1.offset: 3 5;
+      			rel2.relative: 1.0 1.0;
+				rel2.offset: -3 -5;
+//				color: 0 0 0 255;   //必须要有颜色？？？
+       			box {
+					layout: "horizontal";
+					padding: 4 0;
+					align: 0.5 0.5;
+					min: 1 0;
+				}
+      		}
+       	}	
+	}
+}
+
+
+group {
+	name: "vkbd/cand_item";
+	parts {
+		part {
+			name: "bg";
+			type: RECT;
+			description {
+				state: "default" 0.0;
+				color: 0 0 0 0;
+			}
+		}
+/*		part {
+			name: "box";
+			type: BOX;
+			description {
+				state: "default" 0.0;
+				box {
+					layout: "horizontal_max";
+					padding: 2 0;
+				}
+			}
+		}
+*/
+		part {
+			name: "id";
+			type: TEXT;
+			description {
+				state: "default" 0.0;
+//				rel1.relative: 0.0 0.0;
+//				rel2.relative: 0.18 1.0;
+				align: 0.5 0.5;
+				color: 0 0 0 255;
+				color2: 225 225 225 128;
+				text {
+					font: "Sans";
+                    size: 12;
+					text: "1";
+//					min: 1 1;
+					fit: 1 1;
+				}
+				visible: 0;
+			}
+		}
+		part {
+			name: "label";
+			type: TEXT;
+			description {
+				state: "default" 0.0;
+//				rel1.relative: 0.18 0.0;
+//				rel1.offset: 2 0;
+//				rel2.relative: 1.0 1.0;
+				align: 0.5 0.5;
+				color: 225 225 225 255;
+				color2: 225 225 225 128;
+				text {
+					font: "Sans";
+                    size: 12;
+					text: " ";
+//					min: 0 1;
+//					fit: 1 0;
+				}
+			}
+		}
+	}
+
+	programs {
+		program {
+			name: "id_clicked";
+			signal: "mouse,clicked,1";
+			source: "id";
+			action: SIGNAL_EMIT "id,clicked" "";
+		}
+		program {
+			name: "label_clicked";
+			signal: "mouse,clicked,1";
+			source: "label";
+			action: SIGNAL_EMIT "label,clicked" "";
+		}
+	}
+}
+
+
+
+group {
+	name: "vkbd/preedit_label";
+	parts {
+		part {
+			name: "bg";
+            type: RECT;
+            description {
+        		state: "default" 0.0;
+				color: 0 0 0 0;
+          	}			
+		}
+		part {
+			name: "bg-img";
+   			type: IMAGE;
+     		description {
+     			state: "default" 0.0;
+				rel1.relative: 0.0 0.0;
+				rel1.offset: 0 0;
+      			rel2.relative: 1.0 1.0;
+				rel2.offset: 0 0;
+     			image {
+    				normal: "images/key-default.png";
+  					border: 9 9 9 9;
+				}
+				visible: 0;
+       		}
+		}
+
+		part {
+			name: "label";
+			type: TEXT;
+			description {
+				state: "default" 0.0;
+//				rel1.relative: 0.18 0.0;
+//				rel1.offset: 2 0;
+//				rel2.relative: 1.0 1.0;
+				align: 0.5 0.5;
+				color: 225 225 225 255;
+				color2: 225 225 225 128;
+				text {
+					font: "Sans";
+                    size: 10;
+					text: "";
+//					min: 0 1;
+//					fit: 1 0;
+				}
+			}
+		}
+	}
+}

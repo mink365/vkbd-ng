@@ -1,0 +1,19 @@
+#define STOCK_ICON(icon_file, icon_name)            \
+images {                                            \
+   image: icon_file LOSSY 80;                       \
+}                                                   \
+group {                                             \
+   name: icon_name;                                 \
+    parts {                                         \
+        part { name: "icon";                        \
+            description { state: "default" 0.0;     \
+            image.normal: icon_file;                \
+            }                                       \
+        }                                           \
+    }                                               \
+}                                                   \
+
+
+STOCK_ICON("images/up.png",                    "icon/page_up");
+STOCK_ICON("images/down.png",                    "icon/page_down");
+STOCK_ICON("images/fcitx.png",                    "icon/logo");
